@@ -25,9 +25,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\events\event-list.component.ts" />
+    <None Remove="ClientApp\src\app\events\event-new.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\events\event-new.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\events\event-list.component.ts" />
   </ItemGroup>
 
