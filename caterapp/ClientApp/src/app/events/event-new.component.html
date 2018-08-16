@@ -1,1 +1,22 @@
 New Event
+
+<form [formGroup]="newEventForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label>Name </label>
+    <input type="text" formControlName="name" required />
+  </div>
+
+  <div>
+    <label>Start Date </label>
+    <input type="text" formControlName="startDate" required />
+  </div>
+
+  <div>
+    <label>End Date </label>
+    <input type="text" formControlName="endDate" required />
+  </div>
+
+  <button type="submit">Save</button>
+
+</form>
