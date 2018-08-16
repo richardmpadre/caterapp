@@ -1,13 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
 
-  <div>
-    <a routerLink="/">Home</a> <hr/>
+<app-layout>
+  <div class="jumbotron">
+    <router-outlet></router-outlet>
   </div>
-
-  <router-outlet></router-outlet>
-</div>
-
+</app-layout>

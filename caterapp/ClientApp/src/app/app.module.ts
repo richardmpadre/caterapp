@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { EventListComponent } from './events/event-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EventNewComponent } from './events/event-new.component';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EventNewComponent } from './events/event-new.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
