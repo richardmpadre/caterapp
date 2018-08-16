@@ -9,18 +9,17 @@ import { EventNewComponent } from './events/event-new.component';
 import { UiModule } from './ui/ui.module';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    UiModule
+  ],
+  providers: [],
   declarations: [
     AppComponent,
     EventListComponent,
     EventNewComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    UiModule
-  ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
