@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
+import { EventService } from '../shared/event.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: "./event-new.component.html"
 })
 
 export class EventNewComponent {
+
+  constructor(
+    private eventService: EventService,
+    private router: Router
+  ) { }
+
   newEventForm = new FormGroup({
     name: new FormControl(''),
     startDate: new FormControl(''),
@@ -14,7 +22,8 @@ export class EventNewComponent {
   
 
   onSubmit(form: NgForm) {
-    console.log(form);
+    this.eventService.saveEvent(form);
+    this.router.navigate(['/events']);
   }
 
 }

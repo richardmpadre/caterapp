@@ -1,30 +1,39 @@
 <h3>New Event</h3>
-<hr/>
+<hr />
 
 <form [formGroup]="newEventForm" (ngSubmit)="onSubmit(newEventForm.value)">
 
   <div class="form-group">
-    <mat-form-field class="example-full-width">
-      <input formControlName="name" matInput placeholder="Name">
-    </mat-form-field>
+    <label for="name"></label>
+    <input class="form-control" type="text" formControlName="name" />
   </div>
 
   <div class="form-group">
-    <mat-form-field>
-      <input formControlName="startDate" matInput [matDatepicker]="startDate" placeholder="Choose start date">
-      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-      <mat-datepicker #startDate></mat-datepicker>
-    </mat-form-field>
+    <label for="startDate">Start Date</label>
+    <input class="form-control"
+           formControlName="startDate"
+           type="text"
+           mwlFlatpickr
+           [altInput]="true"
+           [convertModelValue]="true"
+           [enableTime]="true"
+           altFormat="F j, Y H:i"
+           dateFormat="Y-m-d H:i">
   </div>
 
   <div class="form-group">
-    <mat-form-field>
-      <input formControlName="endDate" matInput [matDatepicker]="endDate" placeholder="Choose end date">
-      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-      <mat-datepicker #endDate></mat-datepicker>
-    </mat-form-field>
+    <label for="startDate">End Date</label>
+    <input class="form-control"
+           formControlName="endDate"
+           type="text"
+           mwlFlatpickr
+           [altInput]="true"
+           [convertModelValue]="true"
+           [enableTime]="true"
+           altFormat="F j, Y H:i"
+           dateFormat="Y-m-d H:i">
   </div>
 
-  <button mat-flat-button type="submit">Save</button>
+  <button class="btn btn-primary" type="submit">Save</button>
 
 </form>
