@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: "./event-new.component.html"
@@ -13,8 +13,8 @@ export class EventNewComponent {
   })
   
 
-  onSubmit() {
-    console.log(this.newEventForm.value.name);
+  onSubmit(form: NgForm) {
+    console.log(form);
   }
 
 }

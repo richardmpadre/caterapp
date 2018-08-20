@@ -1,22 +1,30 @@
-New Event
+<h3>New Event</h3>
+<hr/>
 
-<form [formGroup]="newEventForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="newEventForm" (ngSubmit)="onSubmit(newEventForm.value)">
 
-  <div>
-    <label>Name </label>
-    <input type="text" formControlName="name" required />
+  <div class="form-group">
+    <mat-form-field class="example-full-width">
+      <input formControlName="name" matInput placeholder="Name">
+    </mat-form-field>
   </div>
 
-  <div>
-    <label>Start Date </label>
-    <input type="text" formControlName="startDate" required />
+  <div class="form-group">
+    <mat-form-field>
+      <input formControlName="startDate" matInput [matDatepicker]="startDate" placeholder="Choose start date">
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
   </div>
 
-  <div>
-    <label>End Date </label>
-    <input type="text" formControlName="endDate" required />
+  <div class="form-group">
+    <mat-form-field>
+      <input formControlName="endDate" matInput [matDatepicker]="endDate" placeholder="Choose end date">
+      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+      <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
   </div>
 
-  <button type="submit">Save</button>
+  <button mat-flat-button type="submit">Save</button>
 
 </form>
