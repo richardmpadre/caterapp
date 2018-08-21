@@ -7,7 +7,7 @@ import { EventService } from "../shared/event.service";
   templateUrl: "./event-list.component.html"
 })
 
-export class EventListComponent implements OnInit {
+export class EventListComponent {
 
 
   viewDate: Date = new Date();
@@ -17,7 +17,16 @@ export class EventListComponent implements OnInit {
   constructor(
     private eventService: EventService
   ) {
-    this.events = eventService.getEvents();
+    eventService.getEvents().subscribe(data => {
+
+      // convert ISO dates to JS dates
+      data.map(e => {
+        e.start = new Date(e.start);
+        e.end = new Date(e.end);
+      });
+
+      this.events = data;
+    });
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {

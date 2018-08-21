@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { CalendarEvent } from 'angular-calendar';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getEvents(): CalendarEvent[] {
-    return this.events;
+  getEvents(): Observable<any> {
+    return this.http.get('/api/event/list');
   }
 
   saveEvent(eventForm : any) {
@@ -18,10 +20,7 @@ export class EventService {
       start: eventForm.startDate,
       end: eventForm.endDate
     };
-    this.events.push(newEvent);
+    //this.events.push(newEvent);
   }
 
-  events: CalendarEvent[] = [
-    
-  ];
 }
