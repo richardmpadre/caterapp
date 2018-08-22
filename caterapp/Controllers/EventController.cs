@@ -1,22 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace caterapp.Controllers
 {
     [Route("api/[controller]")]
     public class EventController : Controller
     {
-        private IEnumerable<EventListDTO> events = new List<EventListDTO>
+        public static List<EventsDTO> events = new List<EventsDTO>
         {
-            new EventListDTO
+            new EventsDTO
             {
                 Id = 1,
                 Title = "Chard and Chase Birthday Party",
                 Start = new DateTime(2018, 8, 25, 15, 0,0 ),
                 End = new DateTime(2018, 8, 25, 23, 0,0 ),
             },
-            new EventListDTO
+            new EventsDTO
             {
                 Id = 2,
                 Title = "DepEd K12 Seminar",
@@ -28,12 +29,19 @@ namespace caterapp.Controllers
         [HttpGet("[action]")]
         public IActionResult List()
         {
-            return Json(this.events);
+            return Json(events);
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Create([FromBody] EventsDTO eventDTO)
+        {
+            events.Add(eventDTO);
+            return Json(events);
         }
 
     }
 
-    public class EventListDTO
+    public class EventsDTO
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -22,8 +22,10 @@ export class EventNewComponent {
   
 
   onSubmit(form: NgForm) {
-    this.eventService.saveEvent(form);
-    this.router.navigate(['/events']);
+    this.eventService.saveEvent(form).subscribe(response => {
+      this.router.navigate(['/events']);
+    });
+    
   }
 
 }
