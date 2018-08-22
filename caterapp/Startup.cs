@@ -1,8 +1,11 @@
+using caterapp.Model;
+using caterapp.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
@@ -27,6 +30,12 @@ namespace caterapp
                 {
                     options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
                 });
+
+            // Register SQL server as the database connection provider
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=caterapp;Trusted_Connection=True;ConnectRetryCount=0";
+            services.AddDbContext<CaterAppContext>(options => options.UseSqlServer(connection));
+
+            services.AddScoped<IEventRepository, EventRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

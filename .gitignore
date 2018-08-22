@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/caterapp.data/bin/Debug/netcoreapp2.1
+/caterapp.data/obj/Debug/netcoreapp2.1
+/caterapp.data/obj
