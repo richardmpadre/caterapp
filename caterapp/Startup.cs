@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace caterapp
@@ -32,10 +33,15 @@ namespace caterapp
                 });
 
             // Register SQL server as the database connection provider
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=caterapp;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = Configuration.GetConnectionString("caterapp");
             services.AddDbContext<CaterAppContext>(options => options.UseSqlServer(connection));
 
             services.AddScoped<IEventRepository, EventRepository>();
+
+            services.Configure<IISOptions>(options =>
+            {
+                options.ForwardClientCertificate = false;
+            });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -45,8 +51,11 @@ namespace caterapp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
