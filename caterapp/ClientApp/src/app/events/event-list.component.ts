@@ -7,17 +7,19 @@ import { EventService } from "../shared/event.service";
   templateUrl: "./event-list.component.html"
 })
 
-export class EventListComponent {
+export class EventListComponent implements OnInit {
 
-
+  view: string = 'month';
   viewDate: Date = new Date();
   activeDayIsOpen: boolean = false;
   events: CalendarEvent[];
 
   constructor(
     private eventService: EventService
-  ) {
-    eventService.getEvents().subscribe(data => {
+  ) {}
+
+  ngOnInit(): void {
+    this.eventService.getEvents().subscribe(data => {
 
       // convert ISO dates to JS dates
       data.map(e => {

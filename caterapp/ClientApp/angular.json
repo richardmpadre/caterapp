@@ -55,9 +55,6 @@
           "configurations": {
             "production": {
               "browserTarget": "ClientApp:build:production"
-            },
-            "development": {
-              "browserTarget": "ClientApp:build:development"
             }
           }
         },

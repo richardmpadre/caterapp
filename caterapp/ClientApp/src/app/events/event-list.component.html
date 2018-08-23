@@ -1,11 +1,43 @@
-<button type="button" class="btn btn-primary" routerLink="/events/new">New Event</button>
+<div class="row text-center">
 
-Deploy Succesful
+  <div class="col-md-4">
+    <div class="btn-group float-left">
+      <div class="btn btn-primary"
+           mwlCalendarPreviousView
+           [view]="view"
+           [(viewDate)]="viewDate"
+           (viewDateChange)="activeDayIsOpen = false">
+        Previous
+      </div>
+      <div class="btn btn-outline-secondary"
+           mwlCalendarToday
+           [(viewDate)]="viewDate">
+        Today
+      </div>
+      <div class="btn btn-primary"
+           mwlCalendarNextView
+           [view]="view"
+           [(viewDate)]="viewDate"
+           (viewDateChange)="activeDayIsOpen = false">
+        Next
+      </div>
+    </div>
+  </div>
 
-<br/>
+  <div class="col-md-4">
+    <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+  </div>
 
-<mwl-calendar-month-view [viewDate]="viewDate"
-                         [events]="events"
-                         [activeDayIsOpen]="activeDayIsOpen"
-                         (dayClicked)="dayClicked($event.day)">
-</mwl-calendar-month-view>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-primary float-right" routerLink="/events/new">New Event</button>
+  </div>
+
+  </div>
+
+  <br /><br />
+
+  <mwl-calendar-month-view [viewDate]="viewDate"
+                           [events]="events"
+                           [activeDayIsOpen]="activeDayIsOpen"
+                           (dayClicked)="dayClicked($event.day)">
+  </mwl-calendar-month-view>
