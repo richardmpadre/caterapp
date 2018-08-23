@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, NgForm, Validators, AbstractControl } from '@angular/forms';
 import { EventService } from '../shared/event.service';
 import { Router } from '@angular/router';
 
@@ -7,19 +7,26 @@ import { Router } from '@angular/router';
   templateUrl: "./event-new.component.html"
 })
 
-export class EventNewComponent {
+export class EventNewComponent implements OnInit {
+
+  newEventForm: FormGroup;
 
   constructor(
     private eventService: EventService,
     private router: Router
   ) { }
-
-  newEventForm = new FormGroup({
-    name: new FormControl(''),
-    startDate: new FormControl(''),
-    endDate: new FormControl('')
-  })
   
+  ngOnInit(): void {
+    this.newEventForm = new FormGroup({
+      name: new FormControl('', [ Validators.required]),
+      start: new FormControl('', [Validators.required]),
+      end: new FormControl('', [Validators.required])
+    })
+  }
+
+  get name() { return this.newEventForm.get('name'); }
+  get start() { return this.newEventForm.get('start'); }
+
 
   onSubmit(form: NgForm) {
     this.eventService.saveEvent(form).subscribe(response => {

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -21,18 +21,6 @@
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Content Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="ClientApp\src\app\events\event-list.component.ts" />
-    <None Remove="ClientApp\src\app\events\event-new.component.ts" />
-    <None Remove="ClientApp\src\app\models\event.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\events\event-new.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\events\event-list.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\event.ts" />
   </ItemGroup>
 
   <ItemGroup>
