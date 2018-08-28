@@ -13,6 +13,7 @@ import { EventNewComponent } from './events/event-new.component';
 import { UiModule } from './ui/ui.module';
 import { EventService } from './shared/event.service';
 import { HttpClient } from 'selenium-webdriver/http';
+import { EventDetailsComponent } from './events/event-details.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HttpClient } from 'selenium-webdriver/http';
   declarations: [
     AppComponent,
     EventListComponent,
-    EventNewComponent
+    EventNewComponent,
+    EventDetailsComponent
   ],
   bootstrap: [AppComponent]
 })

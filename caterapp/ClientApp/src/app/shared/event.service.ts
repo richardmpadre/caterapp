@@ -30,4 +30,8 @@ export class EventService {
     return this.http.post<CalendarEvent>('/api/event/create', newEvent, httpOptions);
   }
 
+  getEvent(id: number): Observable<any> {
+    return this.http.get('/api/event/get/' + id);
+  };
+
 }

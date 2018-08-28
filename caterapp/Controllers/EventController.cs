@@ -29,5 +29,16 @@ namespace caterapp.Controllers
             return Ok();
         }
 
+        [HttpGet("[action]/{id}")]
+        public IActionResult Get(int id)
+        {
+            var result = _eventRepository.Get(id);
+
+            if (result == null)
+                return NotFound();
+
+            return Json(result);
+        }
+
     }
 }
