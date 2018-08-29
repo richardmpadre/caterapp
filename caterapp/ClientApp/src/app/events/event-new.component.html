@@ -4,10 +4,10 @@
 <form [formGroup]="newEventForm" (ngSubmit)="onSubmit(newEventForm.value)">
 
   <div class="form-group">
-    <label for="name">Name</label>
-    <input id="name" formControlName="name" class="form-control" type="text" required />
-    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-      <div *ngIf="name.errors.required">Name is required.</div>
+    <label for="title">Title</label>
+    <input id="title" formControlName="title" class="form-control" type="text" required />
+    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+      <div *ngIf="title.errors.required">Title is required.</div>
     </div>
   </div>
 
@@ -21,7 +21,7 @@
            [altInput]="true"
            [convertModelValue]="true"
            [enableTime]="true"
-           altFormat="F j, Y H:i"
+           altFormat="F j, Y h:i K"
            dateFormat="Y-m-d H:i">
     <div *ngIf="start.invalid && (start.dirty || start.touched)" class="alert alert-danger">
       <div *ngIf="start.errors.required">Start date is required.</div>
@@ -37,7 +37,7 @@
              [altInput]="true"
              [convertModelValue]="true"
              [enableTime]="true"
-             altFormat="F j, Y H:i"
+             altFormat="F j, Y h:i K"
              dateFormat="Y-m-d H:i">
     </div>
 

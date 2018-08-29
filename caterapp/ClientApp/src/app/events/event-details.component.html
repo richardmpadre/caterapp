@@ -15,9 +15,8 @@
            [altInput]="true"
            [convertModelValue]="true"
            [enableTime]="true"
-           time_24hr="false"
            altFormat="F j, Y h:i K"
-           dateFormat="Y-m-d H:i">
+           dateFormat="Z">
   </div>
 
   <div class="form-group">
@@ -29,8 +28,12 @@
            [altInput]="true"
            [convertModelValue]="true"
            [enableTime]="true"
-           time_24hr="false"
            altFormat="F j, Y h:i K"
-           dateFormat="Y-m-d H:i">
+           dateFormat="Z">
   </div>
 </form>
+
+<div class="btn-toolbar">
+  <button class="btn btn-secondary btn-block" type="button" routerLink="/events">Back</button>
+  <button class="btn btn-primary btn-block" type="submit">Save</button>
+</div>

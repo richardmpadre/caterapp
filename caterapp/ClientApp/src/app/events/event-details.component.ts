@@ -32,10 +32,8 @@ export class EventDetailsComponent implements OnInit {
       // + converts the string to number
       this.id = +params['id'];
       this.eventService.getEvent(this.id).subscribe(data => {
-
         data.start = new Date(data.start);
         data.end = new Date(data.end);
-
         this.model = data;
         this.eventForm.patchValue(this.model);
       });

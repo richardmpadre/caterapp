@@ -22,9 +22,9 @@ export class EventService {
 
   saveEvent(eventForm: any): Observable<any> {
     var newEvent : CalendarEvent = {
-      title: eventForm.name,
-      start: eventForm.startDate,
-      end: eventForm.endDate
+      title: eventForm.title,
+      start: eventForm.start,
+      end: eventForm.end
     };
 
     return this.http.post<CalendarEvent>('/api/event/create', newEvent, httpOptions);

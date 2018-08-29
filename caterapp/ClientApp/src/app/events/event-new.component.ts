@@ -18,13 +18,13 @@ export class EventNewComponent implements OnInit {
   
   ngOnInit(): void {
     this.newEventForm = new FormGroup({
-      name: new FormControl('', [ Validators.required]),
+      title: new FormControl('', [ Validators.required]),
       start: new FormControl('', [Validators.required]),
       end: new FormControl('', [Validators.required])
     })
   }
 
-  get name() { return this.newEventForm.get('name'); }
+  get title() { return this.newEventForm.get('title'); }
   get start() { return this.newEventForm.get('start'); }
 
 
