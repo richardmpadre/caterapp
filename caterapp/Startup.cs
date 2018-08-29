@@ -30,6 +30,8 @@ namespace caterapp
                 .AddJsonOptions(options =>
                 {
                     options.SerializerSettings.DateFormatHandling = DateFormatHandling.IsoDateFormat;
+                    // converts DateTime specified with Utc kind to Local
+                    options.SerializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Local;
                 });
 
             // Register SQL server as the database connection provider
