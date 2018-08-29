@@ -31,8 +31,7 @@ export class EventNewComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.eventService.saveEvent(form).subscribe(response => {
       this.router.navigate(['/events']);
-    });
-    
+    });    
   }
 
 }

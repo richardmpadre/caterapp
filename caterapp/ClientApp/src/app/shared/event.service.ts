@@ -21,7 +21,8 @@ export class EventService {
   }
 
   saveEvent(eventForm: any): Observable<any> {
-    var newEvent : CalendarEvent = {
+    var newEvent: CalendarEvent = {
+      id: eventForm.id,
       title: eventForm.title,
       start: eventForm.start,
       end: eventForm.end

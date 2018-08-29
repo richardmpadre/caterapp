@@ -9,6 +9,7 @@ namespace caterapp.Repositories
     public interface IEventRepository
     {
         int Save(Event entity);
+        int Update(Event entity);
         Event Get(int id);
         IEnumerable<Event> List();
     };
@@ -24,6 +25,16 @@ namespace caterapp.Repositories
         public int Save(Event entity)
         {
             _appContext.Add(entity);
+            _appContext.SaveChanges();
+            return entity.Id;
+        }
+
+        public int Update(Event entity)
+        {
+            var existingRecord = _appContext.Events.SingleOrDefault(e => e.Id == entity.Id);
+            existingRecord.Title = entity.Title;
+            existingRecord.Start = entity.Start;
+            existingRecord.End = entity.End;
             _appContext.SaveChanges();
             return entity.Id;
         }

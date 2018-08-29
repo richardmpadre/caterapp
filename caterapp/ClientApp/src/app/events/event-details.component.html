@@ -1,4 +1,6 @@
-<form [formGroup]="eventForm">
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit(eventForm.value)">
+
+  <input formControlName="id" id="id" type="hidden" />
 
   <div class="form-group">
     <label for="title">Name</label>
@@ -31,9 +33,10 @@
            altFormat="F j, Y h:i K"
            dateFormat="Z">
   </div>
-</form>
 
-<div class="btn-toolbar">
-  <button class="btn btn-secondary btn-block" type="button" routerLink="/events">Back</button>
-  <button class="btn btn-primary btn-block" type="submit">Save</button>
-</div>
+  <div class="btn-toolbar">
+    <button class="btn btn-secondary btn-block" type="button" routerLink="/events">Back</button>
+    <button class="btn btn-primary btn-block" type="submit">Save</button>
+  </div>
+
+</form>

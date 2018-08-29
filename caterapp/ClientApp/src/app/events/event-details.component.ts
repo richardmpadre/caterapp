@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../shared/event.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { CalendarEvent } from 'calendar-utils';
 
 @Component({
@@ -17,13 +17,15 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private eventService : EventService
+    private router: Router,
+    private eventService: EventService,    
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
 
       this.eventForm = new FormGroup({
+        id: new FormControl(''),
         title: new FormControl('', [Validators.required]),
         start: new FormControl('', [Validators.required]),
         end: new FormControl('', [Validators.required])
@@ -38,7 +40,13 @@ export class EventDetailsComponent implements OnInit {
         this.eventForm.patchValue(this.model);
       });
     });
+  }
 
+  onSubmit(form: NgForm) {
+    console.log(form);
+    this.eventService.saveEvent(form).subscribe(response => {
+      this.router.navigate(['/events']);
+    });
   }
 
 }

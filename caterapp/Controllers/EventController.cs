@@ -25,7 +25,10 @@ namespace caterapp.Controllers
         [HttpPost("[action]")]
         public IActionResult Create([FromBody] Event model)
         {
-            _eventRepository.Save(model);
+            if (model.Id == 0)
+                _eventRepository.Save(model);
+            else
+                _eventRepository.Update(model);
             return Ok();
         }
 
