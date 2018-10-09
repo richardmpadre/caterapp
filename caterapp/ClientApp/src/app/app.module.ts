@@ -6,14 +6,18 @@ import { CalendarModule } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { HttpClientModule } from '@angular/common/http';
 
+// angular material imports
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { AppComponent } from './app.component';
 import { EventListComponent } from './events/event-list.component';
-import { AppRoutingModule } from './app-routing.module';
 import { EventNewComponent } from './events/event-new.component';
 import { UiModule } from './ui/ui.module';
 import { EventService } from './shared/event.service';
-import { HttpClient } from 'selenium-webdriver/http';
 import { EventDetailsComponent } from './events/event-details.component';
+import { EventTypeComponent } from './admin/event-type/event-type.component';
+import { NewEventTypeComponent } from './admin/event-type/new-event-type.component';
 
 
 @NgModule({
@@ -30,13 +34,17 @@ import { EventDetailsComponent } from './events/event-details.component';
 
     // angular material imports
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule
   ],
-  providers: [ EventService],
+  providers: [EventService],
   declarations: [
     AppComponent,
     EventListComponent,
     EventNewComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EventTypeComponent,
+    NewEventTypeComponent
   ],
   bootstrap: [AppComponent]
 })
