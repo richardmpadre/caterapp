@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EventType } from '../models/event-type';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,8 +17,11 @@ export class EventTypeService {
   constructor(private http: HttpClient) { }
 
   save(eventForm: any): Observable<any> {
-    console.log('called');
     return this.http.post('/api/event-type/create', eventForm, httpOptions);
+  }
+
+  list(): Observable<EventType[]> {
+    return this.http.get<EventType[]>('/api/event-type');
   }
 
 }

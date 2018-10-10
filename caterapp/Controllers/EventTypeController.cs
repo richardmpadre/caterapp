@@ -18,9 +18,10 @@ namespace caterapp.Controllers
             this._eventTypeRepo = eventTypeRepo;
         }
 
-        public IActionResult Index()
+        [HttpGet("")]
+        public IActionResult List()
         {
-            return View();
+            return Json(_eventTypeRepo.List());
         }
 
         [HttpPost("[action]")]

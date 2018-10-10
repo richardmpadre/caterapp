@@ -29,7 +29,7 @@ namespace caterapp.Repositories
 
         public IEnumerable<EventType> List()
         {
-            throw new NotImplementedException();
+            return _appContext.EventTypes;
         }
 
         public int Create(EventType entity)
