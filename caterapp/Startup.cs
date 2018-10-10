@@ -39,6 +39,7 @@ namespace caterapp
             services.AddDbContext<CaterAppContext>(options => options.UseSqlServer(connection));
 
             services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IEventTypeRepository, EventTypeRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

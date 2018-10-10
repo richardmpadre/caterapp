@@ -9,15 +9,20 @@ import { HttpClientModule } from '@angular/common/http';
 // angular material imports
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'
 
 import { AppComponent } from './app.component';
 import { EventListComponent } from './events/event-list.component';
 import { EventNewComponent } from './events/event-new.component';
 import { UiModule } from './ui/ui.module';
-import { EventService } from './shared/event.service';
 import { EventDetailsComponent } from './events/event-details.component';
 import { EventTypeComponent } from './admin/event-type/event-type.component';
-import { NewEventTypeComponent } from './admin/event-type/new-event-type.component';
+import { EventTypeNewComponent } from './admin/event-type/event-type-new.component';
+
+// services import
+import { EventService } from './shared/event.service';
+import { EventTypeService } from './shared/event-type.service';
 
 
 @NgModule({
@@ -35,16 +40,24 @@ import { NewEventTypeComponent } from './admin/event-type/new-event-type.compone
     // angular material imports
     BrowserAnimationsModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [EventService],
+  providers: [
+    EventService,
+    EventTypeService
+  ],
   declarations: [
     AppComponent,
     EventListComponent,
     EventNewComponent,
     EventDetailsComponent,
+    EventTypeNewComponent,
     EventTypeComponent,
-    NewEventTypeComponent
+  ],
+  entryComponents: [
+    EventTypeNewComponent,
   ],
   bootstrap: [AppComponent]
 })
