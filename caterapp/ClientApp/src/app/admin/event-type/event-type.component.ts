@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { EventTypeNewComponent } from './event-type-new.component';
+import { EventTypeDialogComponent } from './event-type-dialog.component';
 import { EventTypeService } from '../../shared/event-type.service';
 import { EventType } from '../../models/event-type';
+import { EventTypeDeleteComponent } from './event-type-delete.component';
 
 @Component({
   selector: 'app-event-type',
@@ -10,7 +11,7 @@ import { EventType } from '../../models/event-type';
   styleUrls: ['./event-type.component.css']
 })
 export class EventTypeComponent implements OnInit {
-  displayedColumns: string[] = ['name']
+  displayedColumns: string[] = ['name', 'actions']
   dataSource : EventType[];
 
   constructor(
@@ -18,9 +19,27 @@ export class EventTypeComponent implements OnInit {
     public eventTypeService: EventTypeService
   ) { }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(EventTypeNewComponent, {
-      width: '400px'
+  getEventTypes() {
+    this.eventTypeService.list().subscribe(response => {
+      this.dataSource = response;
+    });
+  }
+
+  openDialog(eventType: EventType): void {
+    const dialogRef = this.dialog.open(EventTypeDialogComponent, {
+      width: '400px',
+      data: (eventType || { id: 0, name: '' })
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getEventTypes();
+    });
+  }
+
+  openDeleteDialog(eventType: EventType): void {
+    const dialogRef = this.dialog.open(EventTypeDeleteComponent, {
+      width: '400px',
+      data: eventType
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -30,12 +49,6 @@ export class EventTypeComponent implements OnInit {
 
   ngOnInit() {
     this.getEventTypes();
-  }
-
-  getEventTypes() {
-    this.eventTypeService.list().subscribe(response => {
-      this.dataSource = response;
-    });
   }
 
 }

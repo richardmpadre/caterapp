@@ -27,10 +27,27 @@ namespace caterapp.Controllers
         [HttpPost("[action]")]
         public IActionResult Create([FromBody] EventType eventType)
         {
-            if (eventType.Id == 0)
-                _eventTypeRepo.Create(eventType);
-
+            _eventTypeRepo.Create(eventType);
             return Ok();
+        }
+
+        [HttpPost("[action]")]
+        public IActionResult Update([FromBody] EventType eventType)
+        {
+            try
+            {
+                _eventTypeRepo.Update(eventType);
+                return Ok();
+            }
+            catch (ArgumentException)
+            {
+                return NotFound();
+            } 
+            catch(Exception)
+            {
+                return StatusCode(500, "Server problem encountered");
+            }
+            
         }
     }
 }

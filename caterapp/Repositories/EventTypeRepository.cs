@@ -9,7 +9,7 @@ namespace caterapp.Repositories
     public interface IEventTypeRepository
     {
         int Create(EventType entity);
-        int Update(EventType entity);
+        void Update(EventType entity);
         EventType Get(int id);
         IEnumerable<EventType> List();
     };
@@ -39,9 +39,13 @@ namespace caterapp.Repositories
             return entity.Id;
         }
 
-        public int Update(EventType entity)
+        public void Update(EventType entity)
         {
-            throw new NotImplementedException();
+            var eventType = _appContext.EventTypes.SingleOrDefault(e => e.Id == entity.Id);
+            if (eventType == null) throw new ArgumentException($"Event type with id : {entity.Id} not found");
+
+            eventType.Name = entity.Name;
+            _appContext.SaveChanges();
         }
     }
 }

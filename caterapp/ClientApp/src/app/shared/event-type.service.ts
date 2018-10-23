@@ -17,7 +17,10 @@ export class EventTypeService {
   constructor(private http: HttpClient) { }
 
   save(eventForm: any): Observable<any> {
-    return this.http.post('/api/event-type/create', eventForm, httpOptions);
+    if(eventForm.id)
+      return this.http.post('/api/event-type/update', eventForm, httpOptions);
+    else
+      return this.http.post('/api/event-type/create', eventForm, httpOptions);
   }
 
   list(): Observable<EventType[]> {

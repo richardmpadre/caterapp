@@ -20,11 +20,12 @@ import { EventNewComponent } from './events/event-new.component';
 import { UiModule } from './ui/ui.module';
 import { EventDetailsComponent } from './events/event-details.component';
 import { EventTypeComponent } from './admin/event-type/event-type.component';
-import { EventTypeNewComponent } from './admin/event-type/event-type-new.component';
+import { EventTypeDialogComponent } from './admin/event-type/event-type-dialog.component';
 
 // services import
 import { EventService } from './shared/event.service';
 import { EventTypeService } from './shared/event-type.service';
+import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.component';
 
 
 @NgModule({
@@ -57,11 +58,13 @@ import { EventTypeService } from './shared/event-type.service';
     EventListComponent,
     EventNewComponent,
     EventDetailsComponent,
-    EventTypeNewComponent,
+    EventTypeDialogComponent,
     EventTypeComponent,
+    EventTypeDeleteComponent,
   ],
   entryComponents: [
-    EventTypeNewComponent,
+    EventTypeDialogComponent,
+    EventTypeDeleteComponent
   ],
   bootstrap: [AppComponent]
 })

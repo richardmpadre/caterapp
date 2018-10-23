@@ -1,5 +1,7 @@
 <form [formGroup]="newEventTypeForm" (ngSubmit)="onSubmit(newEventTypeForm.value)">
 
+  <input id="id" formControlName="id" class="form-control" type="hidden" />
+
   <mat-form-field style="width:100%">
     <input matInput id="name" formControlName="name" class="form-control" type="text" placeholder="Name" required />
   </mat-form-field>
