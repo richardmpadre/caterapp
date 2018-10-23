@@ -4,6 +4,6 @@
     <input matInput id="name" formControlName="name" class="form-control" type="text" placeholder="Name" required />
   </mat-form-field>
 
-  <button mat-raised-button color="accent">Save</button>
+  <button mat-raised-button color="accent" type="submit" [disabled]="newEventTypeForm.invalid">Save</button>
 
 </form>

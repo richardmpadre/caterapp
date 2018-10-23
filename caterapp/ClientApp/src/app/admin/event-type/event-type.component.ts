@@ -23,9 +23,16 @@ export class EventTypeComponent implements OnInit {
       width: '400px'
     });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.getEventTypes();
+    });
   }
 
   ngOnInit() {
+    this.getEventTypes();
+  }
+
+  getEventTypes() {
     this.eventTypeService.list().subscribe(response => {
       this.dataSource = response;
     });
