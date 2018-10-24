@@ -30,4 +30,15 @@ export class EventTypeDeleteComponent {
     });
   }
 
+  onYesClick() {
+    console.log('clicked');
+    this.eventTypeService.delete(this.data.id).subscribe(response => {
+      this.dialogRef.close();
+    });
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
+  }
+
 }

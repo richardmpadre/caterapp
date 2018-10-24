@@ -49,5 +49,13 @@ namespace caterapp.Controllers
             }
             
         }
+
+        [HttpPost("[action]/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _eventTypeRepo.Delete(id);
+            return Ok();
+        }
+
     }
 }

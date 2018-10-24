@@ -12,6 +12,7 @@ namespace caterapp.Repositories
         void Update(EventType entity);
         EventType Get(int id);
         IEnumerable<EventType> List();
+        void Delete(int id);
     };
 
     public class EventTypeRepository : IEventTypeRepository
@@ -45,6 +46,15 @@ namespace caterapp.Repositories
             if (eventType == null) throw new ArgumentException($"Event type with id : {entity.Id} not found");
 
             eventType.Name = entity.Name;
+            _appContext.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var eventType = _appContext.EventTypes.SingleOrDefault(e => e.Id == id);
+            if (eventType == null) throw new ArgumentException($"Event type with id : {id} not found");
+
+            _appContext.Remove(eventType);
             _appContext.SaveChanges();
         }
     }

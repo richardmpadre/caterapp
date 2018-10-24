@@ -23,6 +23,10 @@ export class EventTypeService {
       return this.http.post('/api/event-type/create', eventForm, httpOptions);
   }
 
+  delete(id: number) {
+    return this.http.post('/api/event-type/delete/' + id, null, httpOptions);
+  }
+
   list(): Observable<EventType[]> {
     return this.http.get<EventType[]>('/api/event-type');
   }
