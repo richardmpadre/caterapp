@@ -1,13 +1,11 @@
-<nav class="navbar navbar-dark bg-dark mb-5" style="margin-bottom: 1rem !important;">
-  <a class="navbar-brand" href="/">caterapp</a>
-  <div class="navbar-expand mr-auto">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/events">Home</a>
-      <button mat-button [matMenuTriggerFor]="adminMenu">Admin</button>
-      <mat-menu #adminMenu="matMenu">
-        <button mat-menu-item routerLink="/admin/event-types">Manage Event Types</button>
-      </mat-menu>
-
-    </div>
-  </div>
-</nav>
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="mat-elevation-z8">
+    <button mat-button><b>caterapp</b></button>
+    <button mat-button routerLink="/">Home</button>
+    <button mat-button [matMenuTriggerFor]="adminMenu">Admin</button>
+    <mat-menu #adminMenu="matMenu">
+      <button mat-menu-item routerLink="/admin/event-types" color="primary">Event Types</button>
+      <button mat-menu-item routerLink="/admin/event-types" color="primary">Customers</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
