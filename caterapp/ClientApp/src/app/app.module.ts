@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppComponent } from './app.component';
 import { EventListComponent } from './events/event-list.component';
@@ -34,6 +35,7 @@ import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.c
     FormsModule,
     ReactiveFormsModule,
     UiModule,
+    BrowserAnimationsModule,
 
     HttpClientModule,
 
@@ -41,13 +43,13 @@ import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.c
     FlatpickrModule.forRoot(),
 
     // angular material imports
-    BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule
   ],
   providers: [
     EventService,
