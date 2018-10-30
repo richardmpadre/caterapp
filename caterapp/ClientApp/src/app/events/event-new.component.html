@@ -1,49 +1,56 @@
-<h3>New Event</h3>
-<hr />
+<div body-container>
+  <mat-toolbar color="background" class="page-header">
+    <h1>Create New Event</h1>
+  </mat-toolbar>
 
-<form [formGroup]="newEventForm" (ngSubmit)="onSubmit(newEventForm.value)">
 
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input id="title" formControlName="title" class="form-control" type="text" required />
-    <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
-      <div *ngIf="title.errors.required">Title is required.</div>
-    </div>
+  <div class="container">
+    <form [formGroup]="newEventForm" (ngSubmit)="onSubmit(newEventForm.value)">
+
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" formControlName="title" class="form-control" type="text" required />
+        <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+          <div *ngIf="title.errors.required">Title is required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="start">Start Date</label>
+        <input class="form-control"
+               id="start"
+               formControlName="start"
+               type="text"
+               mwlFlatpickr
+               [altInput]="true"
+               [convertModelValue]="true"
+               [enableTime]="true"
+               altFormat="F j, Y h:i K"
+               dateFormat="Y-m-d H:i">
+        <div *ngIf="start.invalid && (start.dirty || start.touched)" class="alert alert-danger">
+          <div *ngIf="start.errors.required">Start date is required.</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="end">End Date</label>
+        <input class="form-control"
+               formControlName="end"
+               type="text"
+               mwlFlatpickr
+               [altInput]="true"
+               [convertModelValue]="true"
+               [enableTime]="true"
+               altFormat="F j, Y h:i K"
+               dateFormat="Y-m-d H:i">
+      </div>
+
+      <div class="btn-toolbar">
+        <button class="btn btn-secondary btn-block" type="button" routerLink="/events">Cancel</button>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="newEventForm.invalid">Save</button>
+      </div>
+
+    </form>
   </div>
 
-  <div class="form-group">
-    <label for="start">Start Date</label>
-    <input class="form-control"
-           id="start"
-           formControlName="start"
-           type="text"
-           mwlFlatpickr
-           [altInput]="true"
-           [convertModelValue]="true"
-           [enableTime]="true"
-           altFormat="F j, Y h:i K"
-           dateFormat="Y-m-d H:i">
-    <div *ngIf="start.invalid && (start.dirty || start.touched)" class="alert alert-danger">
-      <div *ngIf="start.errors.required">Start date is required.</div>
-    </div>
-  </div>
-
-    <div class="form-group">
-      <label for="end">End Date</label>
-      <input class="form-control"
-             formControlName="end"
-             type="text"
-             mwlFlatpickr
-             [altInput]="true"
-             [convertModelValue]="true"
-             [enableTime]="true"
-             altFormat="F j, Y h:i K"
-             dateFormat="Y-m-d H:i">
-    </div>
-
-    <div class="btn-toolbar">
-      <button class="btn btn-secondary btn-block" type="button" routerLink="/events">Cancel</button>
-      <button class="btn btn-primary btn-block" type="submit" [disabled]="newEventForm.invalid">Save</button>
-    </div>
-
-</form>
+</div>

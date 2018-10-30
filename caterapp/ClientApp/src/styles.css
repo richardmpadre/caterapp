@@ -1,10 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
 /*@import '~@angular/material/prebuilt-themes/indigo-pink.css';*/
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/*@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';*/
 
 /* Import bootstrap and font-awesome*/
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
+
+
 /* Angular 6 Calendar by Matt Lewis*/
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+.cal-month-view .cal-day-cell {
+  min-height: 150px;
+}
+
+/*.cal-month-view {
+  padding-bottom: 20px;
+}*/

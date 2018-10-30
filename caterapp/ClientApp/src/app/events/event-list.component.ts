@@ -5,7 +5,8 @@ import { EventService } from "../shared/event.service";
 import { Router } from "@angular/router";
 
 @Component({
-  templateUrl: "./event-list.component.html"
+  templateUrl: "./event-list.component.html",
+  styleUrls: ["./event-list.component.css"]
 })
 
 export class EventListComponent implements OnInit {
