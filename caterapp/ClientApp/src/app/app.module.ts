@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { EventListComponent } from './events/event-list.component';
@@ -49,7 +50,8 @@ import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.c
     MatInputModule,
     MatTableModule,
     MatToolbarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [
     EventService,
