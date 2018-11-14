@@ -2,9 +2,11 @@
 export class Event {
 
   constructor(
-    public name: string,
-    public startDate: Date,
-    public endDate: Date
+    public id: number,
+    public title: string,
+    public start: Date,
+    public end: Date,
+    public typeId: number
   ) { }
 
 }

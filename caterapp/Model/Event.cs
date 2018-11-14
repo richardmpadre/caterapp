@@ -11,5 +11,6 @@ namespace caterapp.Model
         public string Title { get; set; }
         public DateTimeOffset Start { get; set; }
         public DateTimeOffset End { get; set; }
+        public int TypeId { get; set; }
     }
 }

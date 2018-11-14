@@ -18,14 +18,7 @@ export interface Food {
 
 export class EventNewComponent implements OnInit {
 
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
-  ];
-
   eventTypes: EventType[];
-
   newEventForm: FormGroup;
 
   constructor(
@@ -39,7 +32,7 @@ export class EventNewComponent implements OnInit {
       title: new FormControl('', [ Validators.required]),
       start: new FormControl(new Date().setHours(8, 0, 0, 0), [Validators.required]),
       end: new FormControl(new Date().setHours(17, 0, 0, 0), [Validators.required]),
-      type: new FormControl('', [Validators.required])
+      typeId: new FormControl('', [Validators.required])
     })
 
     this.eventTypeService.list().subscribe(data => {
@@ -51,7 +44,7 @@ export class EventNewComponent implements OnInit {
   get title() { return this.newEventForm.get('title'); }
   get start() { return this.newEventForm.get('start'); }
   get end() { return this.newEventForm.get('end'); }
-  get type() { return this.newEventForm.get('type'); }
+  get typeId() { return this.newEventForm.get('typeId'); }
 
 
   onSubmit(form: NgForm) {
