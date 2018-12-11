@@ -35,6 +35,7 @@ namespace caterapp.Repositories
             existingRecord.Title = entity.Title;
             existingRecord.Start = entity.Start;
             existingRecord.End = entity.End;
+            existingRecord.TypeId = entity.TypeId;
             _appContext.SaveChanges();
             return entity.Id;
         }

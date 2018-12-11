@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 // angular material imports
 import { MatButtonModule } from '@angular/material/button';
@@ -51,7 +52,10 @@ import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.c
     MatTableModule,
     MatToolbarModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+
+    // Import toastr
+    ToastrModule.forRoot()
   ],
   providers: [
     EventService,

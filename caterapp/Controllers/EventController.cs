@@ -29,7 +29,7 @@ namespace caterapp.Controllers
                 _eventRepository.Save(model);
             else
                 _eventRepository.Update(model);
-            return Ok();
+            return Ok(model);
         }
 
         [HttpGet("[action]/{id}")]

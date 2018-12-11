@@ -4,6 +4,7 @@ import { EventService } from '../shared/event.service';
 import { Router } from '@angular/router';
 import { EventTypeService } from '../shared/event-type.service';
 import { EventType } from '../models/event-type';
+import { ToastrService } from 'ngx-toastr';
 
 export interface Food {
   value: string;
@@ -24,16 +25,23 @@ export class EventNewComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private router: Router,
-    private eventTypeService: EventTypeService
+    private eventTypeService: EventTypeService,
+    private toastrService : ToastrService
   ) {}
   
   ngOnInit(): void {
     this.newEventForm = new FormGroup({
       title: new FormControl('', [ Validators.required]),
-      start: new FormControl(new Date().setHours(8, 0, 0, 0), [Validators.required]),
-      end: new FormControl(new Date().setHours(17, 0, 0, 0), [Validators.required]),
+      start: new FormControl('', [Validators.required]),
+      end: new FormControl('', [Validators.required]),
       typeId: new FormControl('', [Validators.required])
     })
+
+    var initStartDate = new Date();
+    var initEndDate = new Date();
+    initStartDate.setHours(8, 0, 0, 0);
+    initEndDate.setHours(17, 0, 0, 0);
+    this.newEventForm.patchValue({ start: initStartDate, end: initEndDate });
 
     this.eventTypeService.list().subscribe(data => {
       this.eventTypes = data;
@@ -49,8 +57,10 @@ export class EventNewComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.eventService.saveEvent(form).subscribe(response => {
-      this.router.navigate(['/events']);
-    });    
+      console.log(response);
+      this.router.navigate(['/events/details/' + response.id]);
+      this.toastrService.success("New event created");
+    });
   }
 
   startDateChanged(newDate: Date) {
