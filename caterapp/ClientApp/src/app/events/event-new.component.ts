@@ -57,7 +57,6 @@ export class EventNewComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.eventService.saveEvent(form).subscribe(response => {
-      console.log(response);
       this.router.navigate(['/events/details/' + response.id]);
       this.toastrService.success("New event created");
     });

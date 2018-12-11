@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { CalendarEvent } from 'calendar-utils';
 import { EventType } from '../models/event-type';
 import { EventTypeService } from '../shared/event-type.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-event-details',
@@ -22,7 +23,8 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private eventService: EventService,
-    private eventTypeService : EventTypeService
+    private eventTypeService: EventTypeService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit() {
@@ -61,8 +63,18 @@ export class EventDetailsComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     this.eventService.saveEvent(form).subscribe(response => {
-      this.router.navigate(['/events']);
+      this.toastrService.success("Event updated")
+      this.router.navigate(['/events/details/' + response.id]);
     });
+  }
+
+  startDateChanged(newDate: Date) {
+    var endDate = new Date(newDate);
+    endDate.setHours(17, 0, 0, 0);
+    // workaround: Angular currently has a bug where reactive forms does not automatically update when
+    // the control is updated from component
+    // https://github.com/angular/angular/issues/13792
+    this.eventForm.patchValue({ end: endDate });
   }
 
 }

@@ -55,7 +55,10 @@ import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.c
     MatSelectModule,
 
     // Import toastr
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      timeOut: 100000,
+      positionClass: 'toast-bottom-left'
+    })
   ],
   providers: [
     EventService,
