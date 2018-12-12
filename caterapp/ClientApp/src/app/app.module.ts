@@ -24,11 +24,17 @@ import { UiModule } from './ui/ui.module';
 import { EventDetailsComponent } from './events/event-details.component';
 import { EventTypeComponent } from './admin/event-type/event-type.component';
 import { EventTypeDialogComponent } from './admin/event-type/event-type-dialog.component';
+import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.component';
+
+// customer imports
+import { CustomerListComponent } from './customers/index';
 
 // services import
-import { EventService } from './shared/event.service';
-import { EventTypeService } from './shared/event-type.service';
-import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.component';
+import {
+  EventService,
+  EventTypeService,
+  CustomerService
+} from './shared/index';
 
 
 @NgModule({
@@ -62,7 +68,8 @@ import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.c
   ],
   providers: [
     EventService,
-    EventTypeService
+    EventTypeService,
+    CustomerService
   ],
   declarations: [
     AppComponent,
@@ -72,6 +79,7 @@ import { EventTypeDeleteComponent } from './admin/event-type/event-type-delete.c
     EventTypeDialogComponent,
     EventTypeComponent,
     EventTypeDeleteComponent,
+    CustomerListComponent,
   ],
   entryComponents: [
     EventTypeDialogComponent,
