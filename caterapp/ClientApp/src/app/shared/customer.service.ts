@@ -17,11 +17,8 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  getCustomers(): Customer[] {
-    return [
-      { id: 1, name: 'Richard Padre', contactNumber: '09175735383', altContactNumber: 'n/a', email: 'richardmpadre@gmail.com', address: 'Guinobatan, Albay' },
-      { id: 1, name: 'Paula Flores', contactNumber: '09175735383', altContactNumber: 'n/a', email: 'richardmpadre@gmail.com', address: 'Guinobatan, Albay' }
-    ];
+  getCustomers(): Observable<Customer[]> {
+    return this.http.get<Customer[]>('/api/customer');
   }
 
 }

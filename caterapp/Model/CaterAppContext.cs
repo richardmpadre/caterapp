@@ -14,6 +14,7 @@ namespace caterapp.Model
         }
 
         public DbSet<Event> Events { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<EventType> EventTypes { get; set; }
     }

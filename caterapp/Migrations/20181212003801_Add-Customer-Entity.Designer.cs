@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using caterapp.Model;
 
 namespace caterapp.Migrations
 {
     [DbContext(typeof(CaterAppContext))]
-    partial class CaterAppContextModelSnapshot : ModelSnapshot
+    [Migration("20181212003801_Add-Customer-Entity")]
+    partial class AddCustomerEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +33,7 @@ namespace caterapp.Migrations
 
                     b.Property<string>("ContactNumber");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("EmailAddress");
 
                     b.Property<string>("Name");
 

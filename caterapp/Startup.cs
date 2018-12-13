@@ -38,8 +38,10 @@ namespace caterapp
             var connection = Configuration.GetConnectionString("caterapp");
             services.AddDbContext<CaterAppContext>(options => options.UseSqlServer(connection));
 
+            // Register Services
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IEventTypeRepository, EventTypeRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
