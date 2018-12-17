@@ -35,6 +35,7 @@ import {
   EventTypeService,
   CustomerService
 } from './shared/index';
+import { CustomerCreateComponent } from './customers/customer-create.component';
 
 
 @NgModule({
@@ -80,10 +81,12 @@ import {
     EventTypeComponent,
     EventTypeDeleteComponent,
     CustomerListComponent,
+    CustomerCreateComponent
   ],
   entryComponents: [
     EventTypeDialogComponent,
-    EventTypeDeleteComponent
+    EventTypeDeleteComponent,
+    CustomerCreateComponent
   ],
   bootstrap: [AppComponent]
 })
