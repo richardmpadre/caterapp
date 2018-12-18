@@ -17,8 +17,15 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  getCustomers(): Observable<Customer[]> {
+  get(): Observable<Customer[]> {
     return this.http.get<Customer[]>('/api/customer');
   }
+
+  save(form): number {
+    console.log(form);
+    return 0;
+  }
+
+
 
 }

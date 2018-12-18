@@ -19,14 +19,15 @@ export class CustomerListComponent implements OnInit  {
   ) { }
 
   ngOnInit() {
-    this.customerService.getCustomers().subscribe(response => {
+    this.customerService.get().subscribe(response => {
       this.dataSource = response;
     });
   }
 
   new() {
     const dialogRef = this.dialog.open(CustomerCreateComponent, {
-      width: '600px'
+      width: '600px',
+      data: {}
     });
 
   }
